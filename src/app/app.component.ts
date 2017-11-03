@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  person:string = 'John Doe';
+  age:number = 30;
+  address:any = {street:'rue du Paradis', city:'75010 Paris'};
+  alignement:string = 'right';
+  couleur:string = 'red';
 }
