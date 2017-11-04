@@ -1,1 +1,39 @@
-<div [ngStyle]="{color:couleur}" [align]="alignement">Personne : {{person}} | Age : {{age}} | Adresse : {{address.street}}</div>
+<!-- Data Binding !! -->
+
+<!-- [Property Binding] sur un élément du DOM et sur un attribut directive
+     (avec respectivement [align] et [ngStyle] )
+     : utiliser les proprités du component app dans un élément du DOM
+     ( peut aussi se faire avec l'interpolation : align="{{alignement}}" )
+     ou dans un attribut directive-->
+<div [ngStyle]="{color:couleur}"
+     [align]="alignement">
+
+  <!-- {{Interpolation}} : utilise les proritées du component app dans texte -->
+  Personne : {{person}} | Age : {{age}} | Adresse : {{address.street}}
+</div>
+
+<!-- [Property Bining] sur une proprité du component comp1 :
+ utilise une proprité du component app (address)
+ comme input du component comp1 (monAdresse) -->
+<app-comp1 [monAdresse]="address"></app-comp1>
+
+<!-- (Event Binding) -->
+<!-- Evènement click sur button exécute la proprité modifierPersonne() du component app-->
+<button (click)="modifierPersonne()">Modifier personne</button>
+
+<!-- Event Binding (counterChange) crée dans component comp2 :
+     permet de récupérer dans app le proprité counterValue en Output de comp2
+     suite à évènements intégrer par comp2 -->
+<h1>Event Binding - Compteur</h1>
+<div>
+  <app-comp2 (counterChange)="myValueChange($event);"></app-comp2>
+</div>
+<br/>
+<div>Compteur : {{compteur}}</div>
+<br/>
+
+<!-- [(Two-Way Data Binding)] = [Property Binding] + (Event Binding) -->
+<!-- Utilise propriété (maTaille) de app comme Input (taille) du component mataille
+     Renvoie cette même propriété (pouvant être alors modifiée) dans app suite à évènements intégrer par mataille-->
+<app-mataille [(taille)]="maTaille"></app-mataille>
+<div [style.font-size.px]="maTaille">texte resizer {{maTaille}}</div>

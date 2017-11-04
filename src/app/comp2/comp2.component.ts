@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-comp2',
-  templateUrl: './comp2.component.html',
-  styleUrls: ['./comp2.component.css']
+  template: `<button (click)="decrement()"> - </button>
+  <button (click)="increment()"> + </button>`
 })
-export class Comp2Component implements OnInit {
+export class Comp2Component {
 
-  constructor() { }
+  counterValue: number = 0;
+  @Output() counterChange = new EventEmitter();
 
-  ngOnInit() {
+  increment() {
+    this.counterValue++;
+    this.counterChange.emit({value: this.counterValue});
+  }
+
+  decrement() {
+    this.counterValue--;
+    this.counterChange.emit({value: this.counterValue});
   }
 
 }
