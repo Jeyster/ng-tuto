@@ -37,3 +37,10 @@
      Renvoie cette même propriété (pouvant être alors modifiée) dans app suite à évènements intégrer par mataille-->
 <app-mataille [(taille)]="maTaille"></app-mataille>
 <div [style.font-size.px]="maTaille">texte resizer {{maTaille}}</div>
+
+
+<!-- [(Two-Way Data Binding)] avec directive NgModel :
+     Permet de réaliser du Data Binding avec éléments input et textarea d'un formulaire -->
+<div>
+  <input [(ngModel)]="person"/>
+</div>
